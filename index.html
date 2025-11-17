@@ -117,317 +117,208 @@ header.scrolled{box-shadow:0 4px 16px rgba(0,0,0,0.12);}
   --primary:#1f3c88; --accent:#00c4ff; --bg:#f9f9f9; --card-bg:#ffffff; --muted:#6b7280; --radius:12px;
 }
 
-/* ============================================================
-   CLEAN, FULLY RESPONSIVE HERO SECTION FOR 4FORCE DEVELOPERS
-   ============================================================ */
 
+/* HERO CONTAINER */
 .enhanced-hero {
   position: relative;
-  overflow: hidden;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Background image fallback */
-.hero-bg {
-position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  z-index: 0;
-}
-
-/* Dark gradient overlay */
-.enhanced-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8,25,56,0.88), rgba(0,0,0,0.2));
-  z-index: 1;
-}
-
-/* Video background */
+/* VIDEO BACKGROUND */
 .hero-video {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100vw;
   height: 100vh;
-  min-width: 100%;
-  min-height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 0;
-  display: block;
-  opacity: 0.95;
 }
 
-/* Show only in video-mode */
-.enhanced-hero.video-mode .hero-video { display: block; }
-.enhanced-hero.video-mode .hero-bg { display: none; }
-
-/* Toggle button */
-.bg-toggle {
+/* VIDEO OVERLAY */
+.hero-overlay {
   position: absolute;
-  top: 100px;
-  right: 6%;
-  z-index: 5;
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-}
-.bg-toggle:hover {
-  background: rgba(255,255,255,0.15);
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
 }
 
-/* ===============================
-        HERO CONTENT GRID
-   =============================== */
-
+/* HERO CONTENT */
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 120px 8% 70px;
-  min-height: 95vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
+  padding: 80px 8% 60px;
 }
 
-.hero-text h1 {
+/* HERO TEXT */
+.hero-text {
+  flex: 1 1 500px;
+  min-width: 280px;
+  max-width: 650px;
   color: #fff;
-  font-size: 52px;
-  line-height: 1.05;
-  margin-bottom: 14px;
+  margin-bottom: 30px;
+}
+.hero-text h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 16px;
 }
 .hero-text .lead {
-  color: rgba(255,255,255,0.92);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   margin-bottom: 20px;
+  color: rgba(255,255,255,0.9);
 }
 
-/* Buttons */
+/* BUTTONS */
 .actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-/* Chips */
-.hero-services {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
 }
+
+/* CHIPS */
+.hero-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 .hs-item {
   display: flex;
-  gap: 10px;
   align-items: center;
-  padding: 8px 14px;
+  gap: 8px;
+  padding: 6px 12px;
   border-radius: 999px;
   background: rgba(255,255,255,0.06);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.1);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
-.hs-item img {
-  width: 18px;
-  height: 18px;
-  filter: invert(1) brightness(1.2);
-}
+.hs-item img { width: 18px; height: 18px; }
 
-/* Floating cards */
+/* FLOATING CARDS */
 .hero-cards {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   margin: 20px 0;
+  flex-wrap: wrap;
 }
 .hero-cards .card {
   min-width: 120px;
-  background: rgba(255,255,255,0.07);
   padding: 10px 14px;
   border-radius: 10px;
+  background: rgba(255,255,255,0.07);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.08);
-  animation: float 6s ease-in-out infinite;
+  text-align: center;
 }
 
-/* Counters */
+/* COUNTERS */
 .counters {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-top: 12px;
 }
 .counter {
-  min-width: 120px;
-  background: rgba(255,255,255,0.06);
-  padding: 10px 14px;
-  color: #fff;
+  flex: 1 1 100px;
+  background: rgba(255,255,255,0.07);
+  padding: 10px 12px;
   border-radius: 10px;
   text-align: center;
 }
 
-/* Hero image */
+/* HERO IMAGE */
+.hero-image {
+  flex: 1 1 300px;
+  min-width: 250px;
+  text-align: center;
+  margin-bottom: 30px;
+}
 .hero-image img {
-  width: 100%;
-  max-width: 500px;  /* prevents it from getting too large */
+  max-width: 100%;
   height: auto;
-  display: block;
-  margin: 0 auto;
   border-radius: 16px;
   box-shadow: 0 18px 50px rgba(0,0,0,0.4);
   object-fit: contain;
 }
 
-/* Logo carousel */
+/* LOGOS */
 .hero-logos {
-  position: relative;
   z-index: 2;
-  margin-top: -20px;
   padding: 20px 8%;
-  background: rgba(255,255,255,0.04);
+  margin-top: -20px;
+  background: rgba(255,255,255,0.03);
 }
 .logosSwiper .swiper-slide img {
-  width: 140px;
-  height: 60px;
+  width: 120px;
+  height: 50px;
   object-fit: contain;
-  filter: grayscale(1);
   opacity: 0.85;
 }
-.logosSwiper .swiper-slide:hover {
-  filter: none;
-  opacity: 1;
-}
+.logosSwiper .swiper-slide:hover { opacity: 1; }
 
+/* RESPONSIVE BREAKPOINTS */
 
-/* ============================================================
-   RESPONSIVE BREAKPOINTS
-   ============================================================ */
-
-/* 1200px */
-@media (max-width: 1200px) {
-  .hero-text h1 { font-size: 46px; }
-  .hero-content { gap: 40px; }
-}
-
-/* 992px (Tablets Horizontal) */
+/* Medium tablets */
 @media (max-width: 992px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 120px 6% 60px;
-  }
-
-  .actions,
-  .hero-services,
-  .hero-cards,
-  .counters {
-    justify-content: center;
-  }
-
-  .hero-image img {
-    width: 80%;
-    margin: 0 auto;
-  }
-
+  .hero-content { flex-direction: column; align-items: center; padding: 60px 6% 40px; }
   .hero-text h1 { font-size: 38px; }
-  .bg-toggle { top: 90px; right: 6%; }
-}
-
-/* 768px (Mobile) */
-@media (max-width: 768px) {
-  .hero-video { display: none !important; }
-  .hero-bg { display: block !important; }
-
-  .hero-text h1 { font-size: 32px; }
-  .hero-text .lead { font-size: 0.95rem; }
-
-  /* Horizontal scroll sections */
-  .hero-services,
-  .hero-cards,
-  .counters {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 6px;
-    justify-content: flex-start;
-  }
-
-  .hero-cards .card { min-width: 130px; }
-  .counter { min-width: 120px; }
-  .hero-image img { width: 100%; }
-}
-/* Tablets */
-@media (max-width: 992px) {
-  .hero-video,
-  .hero-bg {
-    height: 80vh;
-  }
-  .hero-image img {
-    max-width: 400px;
-  }
+  .hero-text { text-align: center; }
+  .hero-image img { max-width: 350px; }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .hero-video { display: none; }
-  .hero-bg { display: block; }
-
-  .hero-image img {
-    max-width: 300px;
-  }
+  .hero-text h1 { font-size: 32px; }
+  .hero-text .lead { font-size: 0.95rem; }
+  .hero-cards, .hero-services, .counters { overflow-x: auto; white-space: nowrap; justify-content: flex-start; }
+  .hero-cards .card { min-width: 130px; }
+  .counter { min-width: 120px; }
+  .hero-image img { max-width: 280px; }
 }
 
 /* Small phones */
 @media (max-width: 480px) {
-  .hero-image img {
-    max-width: 220px;
-  }
-}
-/* 480px (Small Phones) */
-@media (max-width: 480px) {
-  .hero-text h1 { font-size: 26px; }
+  .hero-text h1 { font-size: 26px; line-height: 1.3; }
   .hero-text .lead { font-size: 0.9rem; }
+  .actions { flex-direction: column; gap: 8px; }
+  .hero-image img { max-width: 220px; }
+  .logosSwiper .swiper-slide img { width: 90px; height: 35px; }
+}
 
-  .actions { flex-direction: column; }
 
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(80px + var(--navbar-height, 70px)) 8% 60px; /* add navbar height to top padding */
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
   .hero-content {
-    padding: 100px 5% 40px;
-  }
-
-  .bg-toggle {
-    top: 80px;
-    right: 5%;
-    padding: 6px 10px;
-    font-size: 0.82rem;
-  }
-
-  .logosSwiper .swiper-slide img {
-    width: 100px;
-    height: 40px;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(60px + var(--navbar-height, 70px)) 6% 40px;
   }
 }
 
 
-/* Counters */
-.counters{display:flex; gap:20px; margin-top:32px; flex-wrap:wrap;}
-.counter{background:rgba(255,255,255,0.15); padding:16px 20px; border-radius:var(--radius); flex:1; text-align:center;}
-.counter strong{display:block; font-size:1.5rem; font-weight:700;}
-.counter small{display:block; font-size:0.95rem; color:rgba(255,255,255,0.85);}
-
-/* Sections */
-section{padding:80px 8%;}
-h2{font-size:36px; margin-bottom:20px;}
-.muted{color:var(--muted); font-size:1rem; line-height:1.5;}
 
 /* Why Choose Us Section */
 .why {
@@ -655,7 +546,6 @@ footer .foot-logo img{height:40px; margin-bottom:16px;}
   </div>
 </header>
 
-<!-- Hero (Video Background Only) -->
 <section id="home" class="hero enhanced-hero video-mode" aria-label="Hero - 4Force Developers">
 
   <!-- VIDEO BACKGROUND -->
@@ -663,11 +553,13 @@ footer .foot-logo img{height:40px; margin-bottom:16px;}
     <source src="images/traffic.mp4" type="video/mp4">
     <source src="images/traffic.webm" type="video/webm">
   </video>
-  <!-- small control to toggle video background for preview -->
-  <button id="bgToggle" class="bg-toggle" title="Toggle video background">Preview Video BG</button>
 
+  <!-- VIDEO OVERLAY -->
+  <div class="hero-overlay"></div>
+
+  <!-- HERO CONTENT -->
   <div class="hero-content">
-    <div class="hero-text" data-aos="fade-right" data-aos-delay="100">
+    <div class="hero-text" data-aos="fade-right">
       <h1>We design, build & elevate Kenyan brands online</h1>
       <p class="lead">
         4Force Developers — turning ideas into fast, beautiful, and measurable digital experiences.
@@ -679,55 +571,51 @@ footer .foot-logo img{height:40px; margin-bottom:16px;}
         <a href="#contact" class="btn-primary">Start Project</a>
       </div>
 
-      <!-- Mini service chips -->
-      <div class="hero-services" data-aos="fade-up" data-aos-delay="300">
-        <div class="hs-item"><img src="images/ui2.png" alt="" aria-hidden="true"><span>UI/UX</span></div>
-        <div class="hs-item"><img src="images/web icon.png" alt="" aria-hidden="true"><span>Web Dev</span></div>
-        <div class="hs-item"><img src="images/brand icon.png" alt="" aria-hidden="true"><span>Branding</span></div>
-        <div class="hs-item"><img src="images/merch icon.jpg" alt="" aria-hidden="true"><span>Merch</span></div>
+      <!-- Chips -->
+      <div class="hero-services">
+        <div class="hs-item"><img src="images/ui2.png" alt=""><span>UI/UX</span></div>
+        <div class="hs-item"><img src="images/web icon.png" alt=""><span>Web Dev</span></div>
+        <div class="hs-item"><img src="images/brand icon.png" alt=""><span>Branding</span></div>
+        <div class="hs-item"><img src="images/merch icon.jpg" alt=""><span>Merch</span></div>
       </div>
 
-      <!-- Floating mini-cards -->
-      <div class="hero-cards" aria-hidden="true">
-        <div class="card c1" data-aos="zoom-in" data-aos-delay="400">
-          <strong>Fast</strong><small>Optimized for speed</small>
-        </div>
-        <div class="card c2" data-aos="zoom-in" data-aos-delay="450">
-          <strong>Secure</strong><small>Enterprise-grade security</small>
-        </div>
-        <div class="card c3" data-aos="zoom-in" data-aos-delay="500">
-          <strong>Support</strong><small>Maintenance & growth</small>
-        </div>
+      <!-- Cards -->
+      <div class="hero-cards">
+        <div class="card c1"><strong>Fast</strong><small>Optimized for speed</small></div>
+        <div class="card c2"><strong>Secure</strong><small>Enterprise-grade security</small></div>
+        <div class="card c3"><strong>Support</strong><small>Maintenance & growth</small></div>
       </div>
 
       <!-- Counters -->
-      <div class="counters" data-aos="fade-up" data-aos-delay="600">
+      <div class="counters">
         <div class="counter"><strong id="countProjects">0</strong><small>Projects</small></div>
         <div class="counter"><strong id="countClients">0</strong><small>Clients</small></div>
         <div class="counter"><strong id="countYears">0</strong><small>Years</small></div>
       </div>
     </div>
 
-    <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+    <!-- Hero Image -->
+    <div class="hero-image">
       <img src="images/hero1.png" alt="Team working on digital branding">
     </div>
   </div>
 
-  <!-- Brand logos carousel under hero -->
-  <div class="hero-logos" data-aos="fade-up" data-aos-delay="800">
+  <!-- Logos -->
+  <div class="hero-logos">
     <div class="swiper logosSwiper">
       <div class="swiper-wrapper">
-        <!-- replace these placeholders with your partner logos -->
         <div class="swiper-slide"><img src="images/M-PESA_LOGO-01.svg.png" alt="Mpesa"></div>
-        <div class="swiper-slide"><img src="https://placehold.co/140x60?text=Safaricom" alt="Safaricom"></div>
         <div class="swiper-slide"><img src="images/equity.png" alt="Equity Bank"></div>
+        <div class="swiper-slide"><img src="images/rkb.jpeg" alt="RKB Foundation"></div>
+        <div class="swiper-slide"><img src="https://placehold.co/140x60?text=Safaricom" alt="Safaricom"></div>
         <div class="swiper-slide"><img src="https://placehold.co/140x60?text=FCA" alt="FCA"></div>
         <div class="swiper-slide"><img src="https://placehold.co/140x60?text=KUCSA" alt="KUCSA"></div>
-        <div class="swiper-slide"><img src="images/rkb.jpeg" alt="RKB Foundation"></div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 
 <!-- Benefits -->
