@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4Force Developers Kenya | Contact Us</title>
+<meta name="description" content="Contact 4Force Developers Kenya for inquiries, project discussions, or partnership opportunities.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+:root {
+  --primary:#1f3c88;
+  --accent:#00c4ff;
+  --bg:#f9f9f9;
+  --text:#222;
+  --muted:#6b7280;
+  --card-bg:#fff;
+  --radius:12px;
+}
+[data-theme="dark"] {
+  --bg:#0f141a;
+  --text:#e5e5e5;
+  --muted:#9ca3af;
+  --card-bg:#1b2128;
+}
+
+/* Reset & Base */
+* { box-sizing:border-box; margin:0; padding:0; scroll-behavior:smooth; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); transition:0.3s;}
+img{max-width:100%; display:block;}
+a{text-decoration:none;}
+.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+/* Header */
+header{position:fixed;top:0;width:100%;background:var(--bg);z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:background 0.3s, box-shadow 0.3s;}
+header.scrolled{box-shadow:0 4px 16px rgba(0,0,0,0.12);}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:0 5%;height:70px;}
+.logo img{height:70px;}
+
+/* Navbar Links */
+.nav-links{display:flex;gap:28px;font-weight:600;font-size:1rem;}
+.nav-links a{padding:10px; color:var(--muted); transition:0.3s;}
+.nav-links a:hover{color:var(--primary);}
+
+/* Controls */
+.controls{display:flex;align-items:center;gap:16px;}
+.btn-primary{background:var(--primary);color:#fff;padding:10px 18px;border-radius:var(--radius);font-weight:600;transition:0.3s;font-size:1rem;}
+.btn-primary:hover{background:#163469;}
+.theme-toggle{background:none;border:1px solid var(--accent);color:var(--accent);padding:8px 14px;border-radius:var(--radius);cursor:pointer;transition:0.3s;font-size:0.95rem;}
+.theme-toggle:hover{background:var(--accent);color:#fff;}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:space-around;width:28px;height:24px;background:none;border:none;cursor:pointer;z-index:1100;}
+.hamburger span{display:block;height:3px;width:100%;background:var(--primary);border-radius:2px;transition:0.3s;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* Responsive */
+@media(max-width:992px){
+  .nav-links{
+    position:fixed;top:0;right:-320px;height:100%;width:280px;flex-direction:column;background:var(--bg);padding-top:120px;gap:28px;box-shadow:-4px 0 20px rgba(0,0,0,0.1);transition:right 0.3s;font-size:1.2rem;text-align:center;
+  }
+  .nav-links.open{right:0;}
+  .hamburger{display:flex;}
+  
+  /* Controls responsive */
+  .controls{
+    position:fixed; top:15px; right:15px; flex-direction:column; gap:10px; z-index:1001;
+  }
+  .btn-primary, .theme-toggle{
+    font-size:0.7rem;
+    padding:8px 15px;
+    width:70px;
+    text-align:center;
+  }
+}
+
+/* Hero Section */
+.hero { text-align:center; padding:140px 20px; background:linear-gradient(90deg, rgba(31,60,136,0.9), rgba(0,196,255,0.75)); color:#fff;}
+.hero h2{font-size:2.8rem; margin-bottom:20px;}
+.hero p { font-size:1.2rem; margin-top:16px; max-width:800px; margin-left:auto; margin-right:auto; }
+
+/* Contact Info */
+.contact-section { padding:80px 0; }
+.contact-info { display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; margin-bottom:60px; }
+.contact-card { background:var(--card-bg); padding:28px; border-radius:var(--radius); flex:1; min-width:250px; box-shadow:0 8px 20px rgba(0,0,0,0.05); text-align:center; }
+.contact-card h3 { margin-bottom:12px; color:var(--primary); }
+.contact-card p { color:var(--muted); line-height:1.6; }
+.contact-card a{color:#fff; text-decoration:none; transition:0.3s; display:inline-block; padding:10px 18px; border-radius:var(--radius); margin-top:10px;}
+.contact-card a:hover{background:#163469;}
+
+/* Map */
+.map-container { width:100%; height:400px; border-radius:var(--radius); overflow:hidden; }
+
+/* Footer */
+footer{background:var(--card-bg); padding:48px 8%; text-align:center; color:var(--muted);}
+footer .foot-logo img{height:40px; margin-bottom:16px;}
+
+
+/* WhatsApp */
+.whatsapp{position:fixed; bottom:24px; right:24px; width:64px; height:64px; border-radius:50%; background:#25d366; color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,0.18); transition:transform 0.3s; z-index:1001;}
+.whatsapp:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<!-- Header/Nav -->
+<header id="header">
+  <div class="nav">
+    <div class="logo"><img src="images/logo.png" alt="4Force Developers Logo"></div>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="brand.html">Branding</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="partners.html">Partners</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="theme-toggle" id="themeToggle">Dark</button>
+      <a class="btn-primary" href="#contact">Get Quote</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h2>Contact 4Force Developers Kenya</h2>
+    <p>Have questions, project ideas, or partnership inquiries? Reach out to us and we will respond promptly.</p>
+  </div>
+</section>
+
+<!-- Contact Info -->
+<section class="contact-section container" id="contact">
+  <div class="contact-info">
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="50">
+      <h3>Address</h3>
+      <p>4Force Developers HQ<br>Kasarani, Nairobi, Kenya</p>
+    </div>
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+      <h3>Email</h3>
+      <p><a href="mailto:dukembusyo@gmail.com">dukembusyo@gmail.com</a></p>
+    </div>
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="150">
+      <h3>Phone</h3>
+      <p><a href="tel:+254768537010">+254 768 537010</a></p>
+    </div>
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+      <h3>Send Email</h3>
+      <p><a href="mailto:4forcedevelopers@gmail.com" class="btn-primary">Email Us</a></p>
+    </div>
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="250">
+      <h3>WhatsApp</h3>
+      <p><a href="https://wa.me/254768537010" target="_blank" class="btn-primary">Chat on WhatsApp</a></p>
+    </div>
+  </div>
+
+  <!-- Google Map -->
+  <div class="map-container" data-aos="fade-up" data-aos-delay="300">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.564109918177!2d36.89514521475934!3d-1.2168674359414238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a9d65ee9bff%3A0x1e09b0b462f9b11!2sKasarani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700040000000!5m2!1sen!2ske" 
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer id="contact">
+  <div class="foot-logo"><img src="logo.svg" alt="4Force Developers Logo"></div>
+  <p>© 2025 4Force Developers Kenya. All rights reserved.</p>
+  <p>Email: dukembusyo@gmail.com | Phone: +254768537010</p>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/254768537010" target="_blank" class="whatsapp">📞</a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ once:true, duration:800 });
+
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', ()=>{
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('active');
+});
+navLinks.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('active');
+  });
+});
+
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', ()=>{
+  document.documentElement.dataset.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  themeToggle.innerText = document.documentElement.dataset.theme === "dark" ? "Light" : "Dark";
+});
+
+// Header scroll effect
+window.addEventListener('scroll',()=>{
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY>50);
+});
+</script>
+</body>
+</html>
