@@ -129,14 +129,21 @@ header.scrolled{box-shadow:0 4px 16px rgba(0,0,0,0.12);}
 /* VIDEO BACKGROUND */
 .hero-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 0;
+  pointer-events: none;
 }
+
+.hero {
+  position: relative;
+  min-height: 75vh;
+  overflow: hidden;
+}
+
 
 /* VIDEO OVERLAY */
 .hero-overlay {
@@ -319,198 +326,264 @@ header.scrolled{box-shadow:0 4px 16px rgba(0,0,0,0.12);}
 }
 
 
+/* Universal Section Styling Consistency */
+section {
+  padding: 90px 8%;
+  position: relative;
+  z-index: 2;
+}
 
-/* Why Choose Us Section */
+section h2 {
+  font-family: "Poppins", sans-serif;
+  color: var(--primary);
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+section p.muted {
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 45px;
+  font-size: 1.05rem;
+}
+
+/* Shared card appearance across site */
+.card, 
+.service-card, 
+.benefit-card, 
+.swiper-slide {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+.card:hover, 
+.service-card:hover, 
+.benefit-card:hover, 
+.swiper-slide:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+/* ---------------------------------------------------
+   WHY CHOOSE US SECTION
+-----------------------------------------------------*/
+
 .why {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  grid-template-columns: 1.2fr 1fr;
   gap: 60px;
-  padding: 100px 10%;
-  background: var(--section-bg);
+  align-items: center;
 }
 
 .why-text h2 {
-  font-size: 2.4rem;
-  color: var(--primary);
-  margin-bottom: 16px;
+  text-align: left;
 }
 
 .why-text p.muted {
-  color: var(--muted);
-  font-size: 1.1rem;
-  margin-bottom: 36px;
-  line-height: 1.6;
+  text-align: left;
 }
 
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 28px;
+  gap: 24px;
 }
 
-.benefit-card {
-  background: var(--card-bg);
-  padding: 26px;
-  border-radius: var(--radius);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-}
-
-.benefit-card h3 {
-  color: var(--primary);
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.benefit-card p {
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Image Styling */
 .why-image img {
   width: 100%;
-  height: auto;
   border-radius: var(--radius);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform .32s ease;
 }
 
 .why-image img:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 992px) {
   .why {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 5%;
     text-align: center;
   }
 
-  .why-text h2 {
-    font-size: 2rem;
-  }
-
-  .benefits-grid {
-    gap: 20px;
-  }
-
-  .benefit-card {
-    padding: 22px;
-  }
-
-  .why-image img {
-    max-width: 90%;
-    margin: 0 auto;
+  .why-text h2, 
+  .why-text p.muted {
+    text-align: center;
   }
 }
 
-@media (max-width: 600px) {
-  .why {
-    padding: 50px 5%;
-  }
-
-  .why-text h2 {
-    font-size: 1.8rem;
-  }
-
-  .benefit-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .benefit-card p {
-    font-size: 0.9rem;
-  }
+/* ---------------------------------------------------
+   SERVICES
+-----------------------------------------------------*/
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
 }
 
-/* Services */
-.services-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px;}
-.service-card{background:var(--card-bg); padding:28px; border-radius:var(--radius); text-align:center; box-shadow:0 4px 18px rgba(0,0,0,0.04); transition:transform 0.3s, box-shadow 0.3s;}
-.service-card:hover{transform:translateY(-5px); box-shadow:0 6px 20px rgba(0,0,0,0.05);}
-.service-card img{width:52px; margin-bottom:16px;}
-.service-card h4{margin:0 0 12px; color:var(--primary);}
-.service-card p{margin:0; font-size:0.95rem; color:var(--muted);}
+.service-card {
+  padding: 34px;
+  text-align: center;
+}
 
-/* Portfolio */
+.service-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 14px;
+}
+
+.service-card h4 {
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+/* ---------------------------------------------------
+   PORTFOLIO
+-----------------------------------------------------*/
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
 }
 
 .portfolio-item {
-  position: relative;
-  overflow: hidden;
   border-radius: var(--radius);
-  cursor: pointer;
-  display: block;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  transition: transform 0.25s ease;
-}
-
-.portfolio-item:hover {
-  transform: translateY(-4px);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
 }
 
 .portfolio-item img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  transition: transform 0.35s ease;
+  transition: transform .35s ease;
 }
 
 .portfolio-item:hover img {
-  transform: scale(1.07);
+  transform: scale(1.08);
 }
 
 .portfolio-item .meta {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  background: rgba(0, 0, 0, 0.65);
-  color: #fff;
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  border-radius: 6px;
+  background: rgba(0,0,0,0.55);
   backdrop-filter: blur(4px);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #fff;
 }
 
-/* Partners */
-.partners{display:flex; flex-wrap:wrap; gap:24px; align-items:center; justify-content:center;}
-.partner{width:130px; height:70px; display:flex; align-items:center; justify-content:center; filter:grayscale(1); opacity:0.7; transition:filter 0.3s, opacity 0.3s, transform 0.3s;}
-.partner img{max-width:100%; max-height:100%;}
-.partner:hover{filter:none; opacity:1; transform:translateY(-4px);}
-@media(max-width:680px){.partner{width:100px; height:50px;}}
+/* ---------------------------------------------------
+   PARTNERS
+-----------------------------------------------------*/
+#partners {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+}
 
-/* Testimonials */
-.swiper{padding:24px 0;}
-.swiper-slide{background:var(--card-bg); padding:28px; border-radius:var(--radius); box-shadow:0 6px 18px rgba(0,0,0,0.05); text-align:center;}
-.swiper-slide p{font-style:italic; font-size:1rem; color:var(--muted); margin-bottom:16px;}
-.swiper-slide strong{display:block; color:var(--primary); font-weight:600;}
+.partners {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
 
-/* CTA */
-.cta{padding:72px 8%; border-radius:var(--radius); background:linear-gradient(90deg,var(--primary),var(--accent)); color:#fff; text-align:center; margin:48px 0;}
-.cta h3{margin:0 0 16px; font-size:28px;}
-.cta .btn-primary{background:#fff; color:var(--primary); padding:14px 24px; font-size:1rem;}
+.partner {
+  width: 140px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: all .28s ease;
+}
 
-/* Footer */
-footer{background:var(--card-bg); padding:48px 8%; text-align:center; color:var(--muted);}
-footer .foot-logo img{height:40px; margin-bottom:16px;}
+.partner:hover {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-4px);
+}
 
-/* WhatsApp */
-.whatsapp{position:fixed; bottom:24px; right:24px; width:64px; height:64px; border-radius:50%; background:#25d366; color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,0.18); transition:transform 0.3s; z-index:1001;}
-.whatsapp:hover{transform:scale(1.1);}
+/* ---------------------------------------------------
+   TESTIMONIALS
+-----------------------------------------------------*/
+.swiper-slide {
+  padding: 32px;
+  text-align: center;
+}
+
+.swiper-slide p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+/* ---------------------------------------------------
+   CTA
+-----------------------------------------------------*/
+.cta {
+  padding: 90px 8%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: var(--radius);
+  text-align: center;
+  color: #fff;
+}
+
+.cta h3 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.cta .btn-primary {
+  background: #fff;
+  color: var(--primary);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* ---------------------------------------------------
+   FOOTER
+-----------------------------------------------------*/
+footer {
+  text-align: center;
+  padding: 60px 8%;
+  background: rgba(0,0,0,0.04);
+  color: var(--muted);
+}
+
+footer img {
+  height: 42px;
+  margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------
+   WHATSAPP BUTTON
+-----------------------------------------------------*/
+.whatsapp {
+  width: 60px;
+  height: 60px;
+  right: 22px;
+  bottom: 22px;
+  font-size: 26px;
+  background:#25d366;
+}
+
 </style>
 </head>
 <body>
