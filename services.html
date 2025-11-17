@@ -184,9 +184,117 @@ h2{font-size:36px; margin-bottom:20px; text-align:center;}
 .cta h3{margin:0 0 16px; font-size:28px;}
 .cta .btn-primary{background:#fff; color:var(--primary); padding:14px 24px; font-size:1rem;}
 
-/* Footer */
-footer{background:var(--card-bg); padding:48px 8%; text-align:center; color:var(--muted);}
-footer .foot-logo img{height:40px; margin-bottom:16px;}
+/* ---------------------------------------------------
+   FOOTER
+-----------------------------------------------------*/
+footer {
+  background: #0f0f0f;
+  color: #ccc;
+  padding: 70px 8% 40px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-col {
+  flex: 1 1 260px;
+}
+
+.footer-logo {
+  height: 55px;
+  margin-bottom: 18px;
+}
+
+.footer-about {
+  color: #b5b5b5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color .25s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+/* Social icons */
+.footer-social a {
+  display: inline-block;
+  margin-right: 12px;
+  font-size: 18px;
+  color: #ddd;
+  transition: 0.25s;
+}
+
+.footer-social a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* Contact */
+.footer-col p a {
+  color: #bbb;
+}
+
+.footer-col p a:hover {
+  color: var(--accent);
+}
+
+/* Footer bottom */
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  footer {
+    text-align: center;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-col {
+    max-width: 380px;
+  }
+
+  .footer-social a {
+    margin-right: 16px;
+  }
+}
 
 
 /* WhatsApp */
@@ -298,11 +406,51 @@ footer .foot-logo img{height:40px; margin-bottom:16px;}
 </section>
 
 <!-- Footer -->
+<!-- Footer -->
 <footer id="contact">
-  <div class="foot-logo"><img src="logo.svg" alt="4Force Developers Logo"></div>
-  <p>© 2025 4Force Developers Kenya. All rights reserved.</p>
-  <p>Email: dukembusyo@gmail.com | Phone: +254768537010</p>
+  <div class="footer-container">
+
+    <!-- Logo -->
+    <div class="footer-col">
+      <img src="images/logo.png" alt="4Force Developers Logo" class="footer-logo">
+      <p class="footer-about">
+        We build modern, functional, and secure digital solutions for brands and businesses in Kenya and beyond.
+      </p>
+
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: <a href="mailto:4forcedevelopers@gmail.com">4forcedevelopers@gmail.com</a></p>
+      <p>Phone: <a href="tel:+254768537010">+254 768 537 010</a></p>
+      <p>Nairobi • Kenya</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 4Force Developers Kenya — All rights reserved.
+  </div>
 </footer>
+
 <!-- WhatsApp -->
 <a href="https://wa.me/254768537010" target="_blank" class="whatsapp">📞</a>
 
