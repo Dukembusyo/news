@@ -1210,27 +1210,18 @@ if (window.AOS) AOS.init({ once:true, duration:700 });
   start();
 })();
 
-/* Background video toggle (preview) */
-(function bgToggle(){
-  const btn = document.getElementById('bgToggle');
-  const hero = document.querySelector('.enhanced-hero');
-  btn.addEventListener('click', ()=>{
-    const enabled = hero.classList.toggle('video-mode');
-    btn.textContent = enabled ? 'Hide Video BG' : 'Preview Video BG';
-    // If enabling, try to play the video
-    const video = hero.querySelector('.hero-video');
-    if (enabled && video) { video.play().catch(()=>{/* autoplay blocked on some browsers */}); }
-    else if (video) { video.pause(); }
-  });
-})();
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.querySelector(".hero-video");
   if (!video) return;
 
+  // Fade in when loaded
   video.addEventListener("loadeddata", () => {
     video.classList.add("loaded");
+  });
+
+  // Auto-play safety (handles mobile restrictions)
+  video.play().catch(() => {
+    console.warn("Autoplay was blocked. User may need to interact.");
   });
 });
 
