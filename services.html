@@ -93,90 +93,81 @@ section{padding:80px 8%;}
 h2{font-size:36px; margin-bottom:20px; text-align:center;}
 .muted{color:var(--muted); font-size:1rem; line-height:1.6; text-align:center; margin-bottom:40px;}
 
-/* Services Section */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-}
 
+/* Sections */
+section{padding:80px 8%;}
+h2{font-size:36px; margin-bottom:20px; text-align:center;}
+.muted{color:var(--muted); font-size:1rem; line-height:1.6; text-align:center; margin-bottom:40px;}
+
+/* keep your existing CSS variables; these rules rely on them */
+.services-tabs-section { padding: 60px 6%; background: transparent; }
+.services-header { text-align:center; margin-bottom:28px; }
+.services-title{ font-size:32px; margin-bottom:6px; color:var(--primary); font-weight:700;}
+.services-subtitle{ color:var(--muted); max-width:900px; margin:0 auto 18px; }
+
+/* Tabs */
+.services-tabs { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:22px; }
+.tab-btn {
+  background:transparent; border:1px solid rgba(31,60,136,0.12); color:var(--primary);
+  padding:8px 14px; border-radius:10px; cursor:pointer; font-weight:600; transition:all .18s;
+}
+.tab-btn:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(31,60,136,0.06); }
+.tab-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+
+/* tab content */
+.tab-content { margin-top:6px; }
+.tab-page { display:none; animation:fadeIn .32s ease; }
+.tab-page.active { display:block; }
+
+/* intro */
+.tab-intro { text-align:left; margin-bottom:18px; }
+.tab-intro h3 { color:var(--primary); font-size:22px; margin-bottom:8px; }
+.tab-intro .muted { color:var(--muted); }
+
+/* grid & cards */
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px; }
 .service-card {
-  background: var(--card-bg);
-  padding: 32px;
-  border-radius: var(--radius);
-  text-align: center;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
+  background:var(--card-bg); padding:20px; border-radius:12px; box-shadow:0 8px 28px rgba(0,0,0,0.04);
+  position:relative; overflow:hidden; transition:transform .22s, box-shadow .22s;
+}
+.service-card:hover{ transform:translateY(-6px); box-shadow:0 12px 40px rgba(0,0,0,0.08); }
+.service-card h4{ color:var(--primary); margin-bottom:8px; font-size:1.05rem; }
+.service-card .short{ color:var(--muted); margin-bottom:12px; }
+
+/* detailed content (collapsed by default) */
+.service-detail { max-height:0; overflow:hidden; opacity:0; transition:all .34s ease; color:var(--muted); font-size:0.95rem; }
+.service-detail strong{ display:block; margin-top:6px; color:var(--text); font-weight:700; }
+.service-detail ul{ margin:8px 0 12px 18px; }
+.service-card.open .service-detail { max-height:600px; opacity:1; margin-top:10px; }
+
+/* toggle button */
+.toggle-detail {
+  display:inline-block; margin-top:10px; background:var(--primary); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;
+  font-weight:600; transition:transform .14s;
+}
+.toggle-detail:hover { transform:translateY(-3px); }
+
+/* CTA */
+.services-cta { text-align:center; margin-top:28px; padding:24px 12px; border-radius:12px; background:linear-gradient(90deg,var(--primary),var(--accent)); color:#fff; }
+.services-cta p{ margin-bottom:12px; color:rgba(255,255,255,0.92); }
+
+/* small animation */
+@keyframes fadeIn { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+/* responsive */
+@media (max-width: 992px) {
+  .tab-intro { text-align:center; }
+  .tab-intro .muted { margin:0 auto 18px; max-width:720px; }
+  .services-tabs { gap:6px; }
+}
+@media (max-width: 520px) {
+  .services-title{ font-size:24px; }
+  .toggle-detail{ width:100%; text-align:center; }
 }
 
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
-}
+.service-img { width:100%; height:200px; border-radius:10px; margin-bottom:12px; object-fit:cover; }
 
-.service-card img {
-  width: 100%;
-  max-height: 180px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  margin-bottom: 20px;
-}
 
-.service-card h4 {
-  margin: 0 0 14px;
-  color: var(--primary);
-  font-size: 1.4rem;
-}
-
-.service-card p {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Detail text (hidden by default) */
-.service-detail {
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  text-align: left;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-/* When expanded */
-.service-detail.show {
-  max-height: 200px; /* Adjust based on content */
-  opacity: 1;
-  margin-top: 16px;
-}
-
-/* See More button styling */
-.see-more-btn {
-  margin-top: 16px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.see-more-btn:hover {
-  background: var(--primary-dark, #0056b3);
-  transform: translateY(-2px);
-}
-
-.see-more-btn:active {
-  transform: scale(0.98);
-}
 
 
 /* CTA Section */
@@ -343,61 +334,674 @@ footer {
   </div>
 </section>
 
-<!-- Services Section -->
-<section id="services">
-  <h2>Our Comprehensive Services</h2>
-  <p class="muted">We combine expertise, creativity, and technology to deliver solutions that make a real impact.</p>
-  
-  <div class="services-grid">
-    <div class="service-card" data-aos="fade-up" data-aos-delay="50">
-      <img src="images/web.png" alt="Web Development">
-      <h4>Web Development</h4>
-      <p>We build responsive, scalable, and secure websites tailored to your business needs.</p>
-      <p class="service-detail hidden">We develop websites using modern technologies like React, Next.js, and Node.js. Our solutions are optimized for speed, SEO, and mobile devices to ensure maximum engagement and conversions.</p>
-      <button class="see-more-btn">See More</button>
-    </div>
+<!-- SERVICES: Tabbed, detailed, price ranges included -->
+<section id="services" class="services-tabs-section" aria-label="Services">
 
-    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="images/ui.png" alt="UI/UX Design">
-      <h4>UI/UX Design</h4>
-      <p>We design digital experiences that are intuitive and visually compelling.</p>
-      <p class="service-detail hidden">We craft interfaces that enhance usability and delight users. Our design process focuses on user journeys, accessibility, and creating an emotional connection with your brand.</p>
-      <button class="see-more-btn">See More</button>
-    </div>
+  <div class="services-header">
+    <h2 class="services-title">Our Comprehensive Services</h2>
+    <p class="services-subtitle">Deep, practical services from discovery to delivery — each service below contains deliverables, timelines and price ranges to help you plan.</p>
+  </div>
 
-    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
-      <img src="images/consult.png" alt="Creative Consulting">
-      <h4>Creative Consulting</h4>
-      <p>We guide businesses with strategies that maximize digital impact.</p>
-      <p class="service-detail hidden">We analyze your goals, audience, and competitors to deliver actionable advice. Our consulting services include branding, content strategy, and marketing solutions that strengthen your presence online.</p>
-      <button class="see-more-btn">See More</button>
-    </div>
+  <!-- TAB BUTTONS -->
+  <div class="services-tabs" role="tablist" aria-label="Service categories">
+    <button class="tab-btn active" data-target="tab-web" role="tab" aria-selected="true">Web Development</button>
+    <button class="tab-btn" data-target="tab-brand" role="tab">Branding & Creative</button>
+    <button class="tab-btn" data-target="tab-marketing" role="tab">Digital Marketing & SEO</button>
+    <button class="tab-btn" data-target="tab-ecom" role="tab">E-Commerce & Systems</button>
+    <button class="tab-btn" data-target="tab-support" role="tab">Support & Maintenance</button>
+    <button class="tab-btn" data-target="tab-consult" role="tab">Consulting & Strategy</button>
+    <button class="tab-btn" data-target="tab-merch" role="tab">Merchandise & Printing</button>
+    <button class="tab-btn" data-target="tab-host" role="tab">Hosting & Domains</button>
+    <button class="tab-btn" data-target="tab-analytics" role="tab">Analytics & Training</button>
+  </div>
 
-    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="images/techsupport.png" alt="Technical Support">
-      <h4>Technical Support</h4>
-      <p>We ensure your digital platforms run smoothly and securely.</p>
-      <p class="service-detail hidden">We provide ongoing monitoring, updates, backups, and security checks, keeping your websites and apps performing optimally at all times.</p>
-      <button class="see-more-btn">See More</button>
-    </div>
+  <!-- TAB PAGES -->
+  <div class="tab-content">
 
-    <div class="service-card" data-aos="fade-up" data-aos-delay="250">
-      <img src="images/ecomm.png" alt="E-Commerce Solutions">
-      <h4>E-Commerce Solutions</h4>
-      <p>We create online stores that drive sales and engagement.</p>
-      <p class="service-detail hidden">We design and implement e-commerce platforms with integrated payments, inventory management, and analytics to maximize conversions and revenue.</p>
-      <button class="see-more-btn">See More</button>
-    </div>
+    <!-- WEB DEVELOPMENT -->
+    <article id="tab-web" class="tab-page active" role="tabpanel">
 
-    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-      <img src="images/seo.png" alt="SEO Optimization">
-      <h4>SEO Optimization</h4>
-      <p>We improve your visibility and reach to attract the right audience.</p>
-      <p class="service-detail hidden">We implement technical SEO, keyword research, on-page optimization, and analytics to increase your search engine rankings and drive targeted traffic.</p>
-      <button class="see-more-btn">See More</button>
-    </div>
+      <div class="tab-intro">
+        <h3>Web Development</h3>
+        <p class="muted">Custom websites built for performance, accessibility and conversion. From brochure sites to complex web apps, we deliver production-grade systems.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+            <img src="images/web.png" alt="Corporate Website" class="service-img">
+          <h4>Corporate / Brochure Website</h4>
+          <p class="short">A clean, responsive corporate website to showcase services, team and contact channels.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Modern, responsive site (5–12 pages) with CMS (optional), contact & lead capture, accessibility and basic SEO setup.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Design mockups (desktop & mobile)</li>
+              <li>HTML / CSS / JS front-end</li>
+              <li>WordPress or headless CMS integration (optional)</li>
+              <li>Contact forms, analytics & basic SEO meta</li>
+            </ul>
+
+            <strong>Timeline</strong> 2–4 weeks
+            <br><strong>Price range</strong> Ksh 35,000 – 120,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+           <img src="images/custom.jpg" alt="Web Application" class="service-img">
+          <h4>Web Application / Custom System</h4>
+          <p class="short">Custom web apps: booking systems, CRMs, portals and dashboards.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Full-stack systems built with modern frameworks (React / Next / Vue + Node / PHP / Laravel) including APIs, authentication, roles & database design.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Requirements & architecture document</li>
+              <li>Functional UI & responsive frontend</li>
+              <li>API endpoints & DB schema</li>
+              <li>Testing, deployment and docs</li>
+            </ul>
+
+            <strong>Timeline</strong> 6–16+ weeks (scope dependent)
+            <br><strong>Price range</strong> Ksh 120,000 – 1,200,000+
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+           <img src="images/landing.jpeg" alt="Web Application" class="service-img">
+          <h4>Landing Pages & Conversion Funnels</h4>
+          <p class="short">High-converting pages for campaigns, events and product launches.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Fast, AMP-friendly landing pages optimized for conversions and ad campaigns (A/B testing available).</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Wireframe + high-fidelity page</li>
+              <li>Analytics & pixel setup</li>
+              <li>A/B test setup (optional)</li>
+            </ul>
+
+            <strong>Timeline</strong> 3–10 days
+            <br><strong>Price range</strong> Ksh 12,000 – 45,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- BRANDING -->
+    <article id="tab-brand" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Branding & Creative Design</h3>
+        <p class="muted">Identity systems, visual design and brand strategy that represent your values and scale across touchpoints.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+            <img src="images/brand2.jpg" alt="Brand Identity Kit" class="service-img">
+
+          <h4>Brand Identity Kit</h4>
+          <p class="short">Logo, color palette, typography, assets and brand usage rules.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Complete identity set including primary & secondary logos, color codes, typography, iconography and a short brand guide for consistent use.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Logo in SVG / PNG / EPS</li>
+              <li>Brand colors & typography</li>
+              <li>Social & email assets</li>
+              <li>1–2 page brand usage guide</li>
+            </ul>
+
+            <strong>Timeline</strong> 1–3 weeks
+            <br><strong>Price range</strong> Ksh 20,000 – 80,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/campaign.jpeg" alt="Visual Campaign Design" class="service-img">
+          <h4>Visual Campaign Design</h4>
+          <p class="short">Campaign creatives for digital & print — ads, banners, posters & social kits.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Campaign visuals matched to brand identity, sized for channels (Facebook, Instagram, print), with CTA testing guidance.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Campaign concept & moodboard</li>
+              <li>5–10 visual assets across platforms</li>
+              <li>Editable source files</li>
+            </ul>
+
+            <strong>Timeline</strong> 5–12 days
+            <br><strong>Price range</strong> Ksh 8,000 – 45,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/package.jpeg" alt="Packaging & Labels" class="service-img">
+          <h4>Packaging & Product Labels</h4>
+          <p class="short">Design for product packaging, kyondo tags, labels and sustainable packaging options.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Production-ready dielines and print-ready artwork optimized for local printers and sustainable materials.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Print-ready PDF + source files</li>
+              <li>Material & finish recommendations</li>
+            </ul>
+
+            <strong>Timeline</strong> 1–2 weeks
+            <br><strong>Price range</strong> Ksh 6,000 – 40,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- MARKETING & SEO -->
+    <article id="tab-marketing" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Digital Marketing & SEO</h3>
+        <p class="muted">Practical growth: SEO, social media, content and ads that bring measurable ROI.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+           <img src="images/seote.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Technical SEO & On-Page</h4>
+          <p class="short">Improve site visibility with technical and on-page SEO work.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Site audit, fix core web vitals, schema markup, page speed improvements, meta optimization, and structured data implementation.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>SEO audit & prioritized checklist</li>
+              <li>On-page SEO for top pages</li>
+              <li>Technical fixes (speed, mobile, schema)</li>
+            </ul>
+
+            <strong>Timeline</strong> 2–6 weeks (initial) + monthly upkeep
+            <br><strong>Price range</strong> Ksh 12,000 – 75,000 (audit + fixes); Ksh 12,000 – 75,000 / month (ongoing)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+           <img src="images/copy.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Content Strategy & Copywriting</h4>
+          <p class="short">Keyword-driven content that attracts and converts.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Content calendars, blog posts, landing copy and UX copywriting focused on conversions and SEO performance.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Content plan + topic cluster</li>
+              <li>4–12 long-form articles or landing pages</li>
+              <li>CMS ready drafts</li>
+            </ul>
+
+            <strong>Timeline</strong> 2–8 weeks (initial batch)
+            <br><strong>Price range</strong> Ksh 8,000 – 45,000 per month (package dependent)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/meta.png" alt="Packaging & Labels" class="service-img">
+          <h4>Paid Ads (Google / Meta)</h4>
+          <p class="short">Setup, optimization and reporting for paid campaigns.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Campaign strategy, creative, conversion tracking and weekly optimization for ROI-focused ad spends.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Campaign setup & creatives</li>
+              <li>Tracking & conversion setup</li>
+              <li>Weekly optimization & monthly reporting</li>
+            </ul>
+
+            <strong>Timeline</strong> Setup 3–7 days, ongoing optimization
+            <br><strong>Price range</strong> Ksh 10,000 – 60,000 setup; management fees Ksh 8,000 – 40,000 / month (plus ad spend)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- E-COMMERCE & SYSTEMS -->
+    <article id="tab-ecom" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>E-Commerce & Systems</h3>
+        <p class="muted">Online stores, payment integrations, inventory & order management solutions.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img src="images/sstore.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Online Store (Small/Medium)</h4>
+          <p class="short">Shop setup with payments, product variants and shipping.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Shopify / WooCommerce / custom solution with Mpesa & card payments, product import and basic inventory controls.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Store design & product pages</li>
+              <li>Payments (Mpesa / PayPal / Card)</li>
+              <li>Order & inventory setup</li>
+            </ul>
+
+            <strong>Timeline</strong> 3–6 weeks
+            <br><strong>Price range</strong> Ksh 60,000 – 220,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/marketplace.jpeg" alt="Packaging & Labels" class="service-img">
+          <h4>Marketplaces & Integrations</h4>
+          <p class="short">Integrate your store with marketplaces, ERPs and logistics.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>API integrations, inventory syncing, order routing and fulfillment automation with local couriers.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Integration plan & mapping</li>
+              <li>Connector scripts & monitoring</li>
+            </ul>
+
+            <strong>Timeline</strong> 4–12 weeks
+            <br><strong>Price range</strong> Ksh 50,000 – 350,000 (depending on systems)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/member.jpeg" alt="Packaging & Labels" class="service-img">
+          <h4>Subscription & Membership Platforms</h4>
+          <p class="short">Recurring billing and user access management systems.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Secure membership portals with gated content, recurring payments and account management.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Auth & membership tiers</li>
+              <li>Payment recurring integration</li>
+              <li>Admin dashboard</li>
+            </ul>
+
+            <strong>Timeline</strong> 6–12 weeks
+            <br><strong>Price range</strong> Ksh 80,000 – 500,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SUPPORT & MAINTENANCE -->
+    <article id="tab-support" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Support & Maintenance</h3>
+        <p class="muted">Keep systems secure, updated and performing at scale with dedicated plans.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img src="images/mantainance.png" alt="Packaging & Labels" class="service-img">
+          <h4>Monthly Maintenance Plan</h4>
+          <p class="short">Regular updates, backups and security monitoring.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Monthly plan that includes patching, backups, uptime monitoring, and small content edits.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Weekly backups</li>
+              <li>Monthly updates and security checks</li>
+              <li>2–4 small content updates per month</li>
+            </ul>
+
+            <strong>Timeline</strong> Ongoing monthly plan
+            <br><strong>Price range</strong> Ksh 6,000 – 30,000 / month
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/recovery.png" alt="Packaging & Labels" class="service-img">
+          <h4>Incident Response & Recovery</h4>
+          <p class="short">Emergency support for hacks, outages and critical failures.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Rapid response, forensic analysis, malware removal and site restore from backups.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Incident diagnostics</li>
+              <li>Restore & harden</li>
+              <li>Post-incident report</li>
+            </ul>
+
+            <strong>Timeline</strong> SLA dependent (4–72 hours)
+            <br><strong>Price range</strong> Ksh 8,000 – 120,000 (incident basis / SLA)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CONSULTING & STRATEGY -->
+    <article id="tab-consult" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Consulting & Strategy</h3>
+        <p class="muted">Product strategy, technical architecture, digital transformation and funding-ready proposals.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img src="images/product strategy.png" alt="Packaging & Labels" class="service-img">
+          <h4>Product Strategy & Roadmap</h4>
+          <p class="short">User research, MVP definition and roadmap planning.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Workshops, research and a 3–12 month product roadmap with milestones and success metrics.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Discovery report</li>
+              <li>Roadmap & prioritization</li>
+              <li>High-level specs</li>
+            </ul>
+
+            <strong>Timeline</strong> 2–4 weeks
+            <br><strong>Price range</strong> Ksh 20,000 – 160,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/proposal.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Funding & Grant Support</h4>
+          <p class="short">Proposal writing and technical annexes for grants and investors.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Technical write-ups, budget estimates and implementation plans tailored for donors and investors.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Full proposal outline</li>
+              <li>Technical annex & budget</li>
+            </ul>
+
+            <strong>Timeline</strong> 7–21 days
+            <br><strong>Price range</strong> Ksh 8,000 – 60,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- MERCHANDISE & PRINTING -->
+    <article id="tab-merch" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Merchandise & Printing</h3>
+        <p class="muted">Design and coordination for branded merchandise, packaging and event collateral.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img src="images/merchadise.jpeg" alt="Packaging & Labels" class="service-img">
+          <h4>Merchandise Design (T-shirts, Caps)</h4>
+          <p class="short">Design mockups and print-ready files for apparel and accessories.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Designs optimized for screen-print, embroidery or heat-press, with mockups for client review and print-ready art.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Print-ready files</li>
+              <li>Mockups & color variants</li>
+            </ul>
+
+            <strong>Timeline</strong> 3–10 days
+            <br><strong>Price range</strong> Ksh 2,000 – 18,000 per design (plus production costs)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/bulk.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Bulk Production Coordination</h4>
+          <p class="short">Sourcing prints, quality checks and delivery coordination.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>We work with local print houses, negotiate costs, arrange samples and manage delivery to your event or storage.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Supplier shortlist</li>
+              <li>Sample approval</li>
+              <li>Production management</li>
+            </ul>
+
+            <strong>Timeline</strong> 2–6 weeks (production dependent)
+            <br><strong>Price range</strong> Service fee Ksh 5,000 – 35,000 + production costs
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- HOSTING & DOMAIN -->
+    <article id="tab-host" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Hosting & Domain Registration</h3>
+        <p class="muted">Reliable hosting, SSL, DNS, email and domain services with local support and backups.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img src="images/domain-registration.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Domain Registration</h4>
+          <p class="short">.ke, .com, .org and other TLD registration & DNS setup.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Domain name search, registration, DNS configuration and transfer assistance.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Domain registration & admin setup</li>
+              <li>DNS + email routing guidance</li>
+            </ul>
+
+            <strong>Timeline</strong> 1–48 hours
+            <br><strong>Price range</strong> Ksh 1,200 – 8,000 / year (TLD dependent) + setup fee Ksh 500 – 2,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/ssl.jpeg" alt="Packaging & Labels" class="service-img">
+          <h4>Managed Hosting & SSL</h4>
+          <p class="short">Fast, secure hosting with backups, staging and SSL certificates.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Shared / VPS / managed cloud hosting options with automatic backups, staging site, SSL and monitoring.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Hosting environment (shared or VPS)</li>
+              <li>SSL certificate & HTTPS setup</li>
+              <li>Daily backups & uptime monitoring</li>
+            </ul>
+
+            <strong>Timeline</strong> 24–72 hours (setup)
+            <br><strong>Price range</strong> Ksh 2,500 – 20,000 / year (shared) ; Ksh 8,000 – 120,000+ / year (VPS/managed)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/email.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Email & Business Tools</h4>
+          <p class="short">Business email (G Suite / Microsoft 365) setup and admin support.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Domain-based email setup, initial user provisioning and admin training for day-to-day use.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>Email provisioning</li>
+              <li>Security & SPF/DKIM setup</li>
+            </ul>
+
+            <strong>Timeline</strong> 1–3 days
+            <br><strong>Price range</strong> Ksh 1,200 – 6,000 / user / year (licensing varies) + setup fee Ksh 1,000 – 6,000
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- ANALYTICS & TRAINING -->
+    <article id="tab-analytics" class="tab-page" role="tabpanel" aria-hidden="true">
+      <div class="tab-intro">
+        <h3>Analytics, Reporting & Training</h3>
+        <p class="muted">Track, measure and scale — training for teams and dashboards for decision makers.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img src="images/dashboard.png" alt="Packaging & Labels" class="service-img">
+          <h4>Analytics Setup & Dashboards</h4>
+          <p class="short">GA4 / Tag Manager setup, funnels and dashboards for marketing & product metrics.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Full analytics setup with event tracking, conversion goals and a dashboard for key metrics.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>GA4 & GTM config</li>
+              <li>Event and conversion tracking</li>
+              <li>Dashboard (Data Studio / Looker / similar)</li>
+            </ul>
+
+            <strong>Timeline</strong> 1–3 weeks
+            <br><strong>Price range</strong> Ksh 8,000 – 60,000 (setup)
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+        <div class="service-card">
+          <img src="images/training.jpg" alt="Packaging & Labels" class="service-img">
+          <h4>Team Training & Handover</h4>
+          <p class="short">Train your staff on CMS, analytics, content and basic maintenance.</p>
+
+          <div class="service-detail">
+            <strong>Description</strong>
+            <p>Hands-on training sessions (remote or in-person) plus recorded guides for future use.</p>
+
+            <strong>Deliverables</strong>
+            <ul>
+              <li>2–4 hour training session(s)</li>
+              <li>Custom step-by-step guide</li>
+            </ul>
+
+            <strong>Timeline</strong> 1–7 days
+            <br><strong>Price range</strong> Ksh 6,000 – 45,000 per session
+          </div>
+
+          <button class="toggle-detail">Read more</button>
+        </div>
+
+      </div>
+    </article>
+
+  </div> <!-- .tab-content -->
+
+  <!-- CTA (global for services) -->
+  <div class="services-cta" aria-hidden="false">
+    <p class="muted">Want a customized quote or package? We’ll prepare a proposal based on your needs.</p>
+    <a href="contact.html" class="btn-primary">Request a Quote</a>
   </div>
 </section>
+
 
 <!-- CTA -->
 <section class="cta" data-aos="fade-up">
@@ -487,6 +1091,45 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
   });
 
+
+
+ document.querySelectorAll('.services-tabs .tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // buttons
+    document.querySelectorAll('.services-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // pages
+    const target = btn.dataset.target;
+    document.querySelectorAll('.tab-page').forEach(page => {
+      if (page.id === target) {
+        page.classList.add('active'); page.removeAttribute('aria-hidden'); page.setAttribute('tabindex', '0');
+      } else {
+        page.classList.remove('active'); page.setAttribute('aria-hidden', 'true'); page.removeAttribute('tabindex');
+      }
+    });
+
+    // scroll into view for mobile
+    if (window.innerWidth < 760) {
+      const top = document.querySelector('#services').getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+
+/* Expand / collapse details */
+document.querySelectorAll('.service-card .toggle-detail').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.service-card');
+    const isOpen = card.classList.toggle('open');
+    btn.textContent = isOpen ? 'See less' : 'Read more';
+    // smooth expand: focus the detail if opening
+    if (isOpen) {
+      const detail = card.querySelector('.service-detail');
+      detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  });
+});
 </script>
 </body>
 </html>
