@@ -61,6 +61,23 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  /* FIX TEXT NOT SHOWING */
+section h2, h2 {
+  color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+section p, p {
+  color: var(--text-light) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure background never hides text */
+body, section {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
 
 /* Default Light Mode */
 :root {
