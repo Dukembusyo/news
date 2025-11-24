@@ -66,11 +66,28 @@
 :root {
   --bg: #ffffff;
   --text: #1a1a1a;
-  --text-light: #4a4a4a;
+  --text-light: #444;
   --primary: #1f3c88;
   --secondary: #00c4ff;
   --radius: 14px;
 }
+
+[data-theme="dark"] {
+  --text: #ffffff;
+  --text-light: #dcdcdc;
+}
+
+section {
+  color: var(--text);
+}
+p, h2 {
+  opacity: 1 !important;
+}
+ 
+:root {
+  --text: #1a1a1a;
+}
+
 
 /* Dark Mode */
 [data-theme="dark"] {
@@ -80,6 +97,18 @@
   --primary: #4d7cff;
   --secondary: #00e0ff;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text) !important;
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-light) !important;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 
 body {
   background: var(--bg);
