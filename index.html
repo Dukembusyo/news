@@ -5,6 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>4Force Developers Kenya | Home</title>
 <meta name="description" content="4Force Developers Kenya – Web design, development & creative consulting agency. Nairobi, Kenya.">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+
+
+
+<!-- SEO -->
+<meta name="description" content="4Force Developers - Professional Web Design, Apps, Branding, Hosting and Digital Solutions in Kenya">
+<meta name="keywords" content="web design kenya, software development kenya, branding agency kenya, ecommerce developers kenya, website developers kenya">
+<meta name="author" content="4Force Developers">
+
+<!-- Preload hero video for faster load -->
+<link rel="preload" as="video" href="videos/hero.mp4" type="video/mp4">
+
+<!-- Preload main font -->
+<link rel="preload" href="fonts/main-font.woff2" as="font" type="font/woff2" crossorigin>
+
+
+
+<!-- Open Graph -->
+<meta property="og:title" content="4Force Developers Kenya - Modern Web & App Solutions">
+<meta property="og:description" content="We build high-performance websites, apps and branding for businesses in Kenya.">
+<meta property="og:image" content="images/og-preview.png">
+<meta property="og:url" content="https://4forcedeveloperskenya.top">
+<meta property="og:type" content="website">
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -14,6 +39,25 @@
 
 <!-- Swiper.js for sliders -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "4Force Developers",
+  "url": "https://4forcedeveloperss.netlify.app",
+  "logo": "https://4forcedeveloperskenya.top/images/logo.png",
+  "sameAs": [
+    "https://www.facebook.com/",
+    "https://www.instagram.com/",
+    "https://www.linkedin.com/"
+  ],
+  "description": "Web Design, App Development, Branding and Digital Services in Kenya."
+}
+</script>
+
 
 <style>
 :root{
@@ -161,7 +205,7 @@ header.scrolled{box-shadow:0 4px 16px rgba(0,0,0,0.12);}
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 34, 59, 0.45);
+  background: rgba(16, 17, 17, 0.45);
   z-index: 1;
 }
 
@@ -689,6 +733,39 @@ section p.muted {
   }
 }
 
+
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 20;
+}
+
+.scroll-indicator span {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  margin-top: 8px;
+  animation: scrollAnim 1.4s infinite ease-in-out;
+}
+
+@keyframes scrollAnim {
+  0% { opacity: 0; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(12px); }
+  80% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0; }
+}
+
 /* ---------------------------------------------------
    FOOTER
 -----------------------------------------------------*/
@@ -917,6 +994,9 @@ footer {
 </section>
 
 
+<div class="scroll-indicator">
+  <span></span>
+</div>
 
 
 <!-- Benefits -->
@@ -1109,6 +1189,25 @@ footer {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
+
+
+    // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }
+
+  // When user toggles theme
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+
+
+
+
 // AOS
 AOS.init({once:true, duration:800});
 
