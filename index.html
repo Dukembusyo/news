@@ -106,6 +106,38 @@ p, h2 {
 }
 
 
+
+/* ----------------------------------------
+   TEXT VISIBILITY + WEIGHT FIX
+-----------------------------------------*/
+
+/* Make all normal text thicker & readable */
+p, section p {
+  color: var(--text-light);
+  font-weight: 500;        /* thicker paragraphs */
+  line-height: 1.7;
+  opacity: 1 !important;
+}
+
+/* Make headings readable, not black */
+h2, section h2 {
+  color: var(--primary);   /* gives a modern brand color */
+  font-weight: 700;        /* thicker + professional */
+  letter-spacing: 0.5px;
+  opacity: 1 !important;
+}
+
+/* For dark mode (optional but recommended) */
+[data-theme="dark"] p {
+  color: #e7e7e7 !important;
+}
+
+[data-theme="dark"] h2 {
+  color: #4cc9ff !important; /* bright accent for dark mode */
+}
+
+
+
 /* Dark Mode */
 [data-theme="dark"] {
   --bg: #0d0d0d;
